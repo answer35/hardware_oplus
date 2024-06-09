@@ -9,6 +9,7 @@
 #include <hidl/Status.h>
 #include <vendor/lineage/touch/1.0/ITouchscreenGesture.h>
 #include <aidl/vendor/lineage/touch/BnTouchscreenGesture.h>
+#include <aidl/vendor/oplus/hardware/touch/IOplusTouch.h>
 #include <map>
 
 namespace aidl {
@@ -16,17 +17,21 @@ namespace vendor {
 namespace lineage {
 namespace touch {
 
-using ::aidl::vendor::oplus::hardware::touch::IOplusTouch;
 using ::android::hardware::Return;
 using ::android::hardware::Void;
 using ::vendor::lineage::touch::V1_0::Gesture;
+using aidl::vendor::oplus::hardware::touch::IOplusTouch;
 
 class TouchscreenGesture : public BnTouchscreenGesture {
   public:
+    explicit TouchscreenGesture(std::shared_ptr<IOplusTouch> oplusTouch);
+
     ndk::ScopedAStatus getSupportedGestures(std::vector<Gesture>* _aidl_return) override;
     ndk::ScopedAStatus setGestureEnabled(const Gesture& gesture, bool enabled) override;
 
   private:
+    std::shared_ptr<IOplusTouch> mOplusTouch;
+
     // See: drivers/input/touchscreen/oplus_touchscreen_v2/touchpanel_common.h
     static constexpr int kGestureStartKey = 246;
     enum {
