@@ -1,3 +1,5 @@
+rw_dir_file(rild, oplus_reserve_radio_file)
+
 hal_client_domain(rild, vendor_hal_oplus_commcenter)
 
 allow rild mnt_vendor_file:dir search;
