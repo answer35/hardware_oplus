@@ -165,10 +165,6 @@ class KeyHandler(private val context: Context) : DeviceKeyHandler {
         return null
     }
 
-    override fun onPocketStateChanged(inPocket: Boolean) {
-        // Do nothing
-    }
-
 
     private fun doHapticFeedback(effect: Int) {
         if (vibrator != null && vibrator.hasVibrator() && effect != -1) {
