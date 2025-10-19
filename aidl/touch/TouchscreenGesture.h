@@ -5,14 +5,10 @@
 
 #pragma once
 
-<<<<<<< HEAD:hidl/touch/TouchscreenGesture.h
-#include <aidl/vendor/oplus/hardware/touch/IOplusTouch.h>
 #include <hidl/MQDescriptor.h>
 #include <hidl/Status.h>
 #include <vendor/lineage/touch/1.0/ITouchscreenGesture.h>
-=======
 #include <aidl/vendor/lineage/touch/BnTouchscreenGesture.h>
->>>>>>> cfceb7c (touch: Migrate to AIDL):aidl/touch/TouchscreenGesture.h
 #include <map>
 
 namespace aidl {
@@ -20,16 +16,12 @@ namespace vendor {
 namespace lineage {
 namespace touch {
 
-<<<<<<< HEAD:hidl/touch/TouchscreenGesture.h
 using ::aidl::vendor::oplus::hardware::touch::IOplusTouch;
 using ::android::hardware::Return;
 using ::android::hardware::Void;
 using ::vendor::lineage::touch::V1_0::Gesture;
 
-class TouchscreenGesture : public ITouchscreenGesture {
-=======
 class TouchscreenGesture : public BnTouchscreenGesture {
->>>>>>> cfceb7c (touch: Migrate to AIDL):aidl/touch/TouchscreenGesture.h
   public:
     ndk::ScopedAStatus getSupportedGestures(std::vector<Gesture>* _aidl_return) override;
     ndk::ScopedAStatus setGestureEnabled(const Gesture& gesture, bool enabled) override;
